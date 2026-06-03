@@ -1,0 +1,214 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="space-y-6">
+    <!-- Header Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Real-time Consumption Card -->
+        <div class="metric-card">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                    <i data-feather="zap"></i>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="status-indicator" style="background-color: var(--color-energy-yellow);"></div>
+                    <span class="text-xs font-medium">En vivo</span>
+                </div>
+            </div>
+            <div>
+                <p class="text-sm text-white/80">Consumo Actual</p>
+                <p class="text-3xl font-bold">5.70 kW</p>
+                <div class="flex items-center gap-1 text-xs mt-1">
+                    <i data-feather="trending-up" class="icon-sm"></i>
+                    <span>+2.5% vs hora anterior</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Cost -->
+        <div class="metric-card">
+            <div class="flex items-center justify-between mb-4">
+                <div class="metric-icon" style="background-color: rgba(16, 185, 129, 0.1);">
+                    <i data-feather="dollar-sign" style="color: var(--color-efficient-green);"></i>
+                </div>
+                <i data-feather="trending-down" style="color: var(--color-efficient-green);"></i>
+            </div>
+            <div>
+                <p class="metric-label">Gasto Hoy</p>
+                <p class="metric-value">$12.45</p>
+                <p class="text-xs text-muted-foreground mt-1">38.2 kWh consumidos</p>
+            </div>
+        </div>
+
+        <!-- Monthly Cost -->
+        <div class="metric-card">
+            <div class="flex items-center justify-between mb-4">
+                <div class="metric-icon" style="background-color: rgba(245, 158, 11, 0.1);">
+                    <i data-feather="activity" style="color: var(--color-warning-orange);"></i>
+                </div>
+                <i data-feather="trending-up" style="color: var(--color-warning-orange);"></i>
+            </div>
+            <div>
+                <p class="metric-label">Gasto Mensual</p>
+                <p class="metric-value">$345.80</p>
+                <p class="text-xs text-muted-foreground mt-1">1,152 kWh este mes</p>
+            </div>
+        </div>
+
+        <!-- Active Devices -->
+        <div class="metric-card">
+            <div class="flex items-center justify-between mb-4">
+                <div class="metric-icon" style="background-color: rgba(37, 99, 235, 0.1);">
+                    <i data-feather="power" style="color: var(--color-electric-blue);"></i>
+                </div>
+                <i data-feather="wifi" style="color: var(--color-efficient-green);"></i>
+            </div>
+            <div>
+                <p class="metric-label">Dispositivos Activos</p>
+                <p class="metric-value">12/18</p>
+                <p class="text-xs text-muted-foreground mt-1">6 en modo stand-by</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Offenders - Consumo Fantasma -->
+    <div class="card">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h3 class="font-semibold text-foreground flex items-center gap-2 text-xl">
+                    <i data-feather="alert-triangle" style="color: var(--color-warning-orange);"></i>
+                    Gasto Oculto - Consumo Fantasma (Stand-by)
+                </h3>
+                <p class="text-sm text-muted-foreground mt-1">
+                    Dispositivos consumiendo energía en reposo - Ahorro potencial: $15.20/mes
+                </p>
+            </div>
+            <div class="flex items-center gap-2 px-4 py-2 bg-warning/10 rounded-lg">
+                <i data-feather="clock" style="color: var(--color-warning-orange);"></i>
+                <div>
+                    <p class="text-xs text-muted-foreground">Desperdicio Total</p>
+                    <p class="text-lg font-bold" style="color: var(--color-warning-orange);">25.3 W</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <!-- Top Offender #1 -->
+            <div class="flex items-center gap-4 p-4 bg-background rounded-lg border border-border hover:border-warning/50 transition-colors">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg font-bold"
+                     style="background-color: rgba(249, 115, 22, 0.1); color: var(--color-warning-orange);">
+                    1
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h4 class="font-medium text-foreground">Aire Acondicionado - Sala</h4>
+                        <span class="badge badge-warning flex items-center gap-1">
+                            <div class="status-indicator" style="background-color: var(--color-energy-yellow);"></div>
+                            En Stand-by
+                        </span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">Consumo en reposo: 8.5W</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-muted-foreground">Costo mensual</p>
+                    <p class="text-xl font-bold" style="color: var(--color-warning-orange);">$2.55</p>
+                </div>
+                <div class="w-32">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 100%; background: linear-gradient(90deg, var(--color-energy-yellow), var(--color-warning-orange));"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Offender #2 -->
+            <div class="flex items-center gap-4 p-4 bg-background rounded-lg border border-border hover:border-warning/50 transition-colors">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg font-bold"
+                     style="background-color: rgba(249, 115, 22, 0.1); color: var(--color-warning-orange);">
+                    2
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h4 class="font-medium text-foreground">Refrigerador - Cocina</h4>
+                        <span class="badge badge-warning flex items-center gap-1">
+                            <div class="status-indicator" style="background-color: var(--color-energy-yellow);"></div>
+                            En Stand-by
+                        </span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">Consumo en reposo: 6.2W</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-muted-foreground">Costo mensual</p>
+                    <p class="text-xl font-bold" style="color: var(--color-warning-orange);">$1.86</p>
+                </div>
+                <div class="w-32">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 73%; background: linear-gradient(90deg, var(--color-energy-yellow), var(--color-warning-orange));"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Offender #3 -->
+            <div class="flex items-center gap-4 p-4 bg-background rounded-lg border border-border hover:border-warning/50 transition-colors">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg font-bold"
+                     style="background-color: rgba(249, 115, 22, 0.1); color: var(--color-warning-orange);">
+                    3
+                </div>
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <h4 class="font-medium text-foreground">TV 55" - Sala</h4>
+                        <span class="badge badge-warning flex items-center gap-1">
+                            <div class="status-indicator" style="background-color: var(--color-energy-yellow);"></div>
+                            En Stand-by
+                        </span>
+                    </div>
+                    <p class="text-sm text-muted-foreground">Consumo en reposo: 4.8W</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-muted-foreground">Costo mensual</p>
+                    <p class="text-xl font-bold" style="color: var(--color-warning-orange);">$1.44</p>
+                </div>
+                <div class="w-32">
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: 56%; background: linear-gradient(90deg, var(--color-energy-yellow), var(--color-warning-orange));"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Alerts -->
+    <div class="card">
+        <h3 class="font-semibold text-foreground mb-4">Alertas Recientes</h3>
+        <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-background rounded-lg border border-border">
+                <div class="status-indicator status-warning" style="margin-top: 0.5rem;"></div>
+                <div class="flex-1">
+                    <p class="font-medium text-foreground">Consumo elevado detectado</p>
+                    <p class="text-sm text-muted-foreground">Aire Acondicionado - Sala</p>
+                </div>
+                <span class="text-xs text-muted-foreground whitespace-nowrap">Hace 15 minutos</span>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-background rounded-lg border border-border">
+                <div class="status-indicator" style="background-color: var(--color-electric-blue); margin-top: 0.5rem;"></div>
+                <div class="flex-1">
+                    <p class="font-medium text-foreground">Dispositivo desconectado</p>
+                    <p class="text-sm text-muted-foreground">Sensor - Cocina</p>
+                </div>
+                <span class="text-xs text-muted-foreground whitespace-nowrap">Hace 1 hora</span>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-background rounded-lg border border-border">
+                <div class="status-indicator status-connected" style="margin-top: 0.5rem;"></div>
+                <div class="flex-1">
+                    <p class="font-medium text-foreground">Ahorro del 15% comparado con ayer</p>
+                    <p class="text-sm text-muted-foreground">Sistema General</p>
+                </div>
+                <span class="text-xs text-muted-foreground whitespace-nowrap">Hace 2 horas</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

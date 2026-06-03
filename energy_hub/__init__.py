@@ -1,0 +1,1 @@
+# Energy Hub Django Application

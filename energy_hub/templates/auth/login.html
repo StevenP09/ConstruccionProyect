@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login - Energy Hub{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/auth.css' %}">{% endblock %}
+
+{% block content %}
+<div class="auth-split">
+    <div class="auth-split-left">
+        <div class="auth-card">
+            <div class="text-center">
+                <div class="auth-logo">
+                    <i data-feather="zap"></i>
+                </div>
+                <h1 class="auth-title">Bienvenido a EnergyHub</h1>
+                <p class="auth-subtitle">Optimiza tu consumo energético de forma inteligente</p>
+            </div>
+
+            <form method="post" class="auth-form space-y-6">
+                {% csrf_token %}
+
+                <div class="space-y-2">
+                    <label class="form-label">Correo Electrónico</label>
+                    <div class="input-group">
+                        <span class="input-icon"><i data-feather="mail"></i></span>
+                        <input type="email" name="email" placeholder="ejemplo@correo.com"
+                               class="form-input input-with-icon" required>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-icon"><i data-feather="lock"></i></span>
+                        <input type="password" id="password-input-login" name="password" placeholder="••••••••"
+                               class="form-input input-with-icon input-with-icon-right" required>
+                        <button type="button" class="input-icon-right" data-toggle-password="password-input-login">
+                            <i data-feather="eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="auth-remember">
+                        <input type="checkbox" class="form-checkbox">
+                        <span>Recordarme</span>
+                    </label>
+                    <a href="{% url 'password_recovery' %}" class="auth-link text-sm">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-full">
+                    Iniciar Sesión
+                </button>
+
+                <p class="auth-footer">
+                    ¿No tienes una cuenta?
+                    <a href="{% url 'register' %}" class="auth-link">Regístrate aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="auth-split-right">
+        <div class="auth-split-content">
+            <div class="inline-block p-3 bg-white/10 backdrop-blur-sm rounded-xl mb-4">
+                <i data-feather="zap" style="width: 3rem; height: 3rem;"></i>
+            </div>
+            <h2>Controla tu energía, ahorra dinero</h2>
+            <p>Monitorea en tiempo real el consumo de tu hogar, detecta desperdicios y optimiza tu factura eléctrica con inteligencia artificial.</p>
+
+            <div class="space-y-4 mt-8">
+                <div class="auth-stat-card">
+                    <span class="auth-stat-indicator"></span>
+                    <div class="flex-1">
+                        <p class="auth-stat-label">Monitoreo 24/7</p>
+                        <p class="auth-stat-value">100%</p>
+                    </div>
+                </div>
+                <div class="auth-stat-card">
+                    <span class="auth-stat-indicator"></span>
+                    <div class="flex-1">
+                        <p class="auth-stat-label">Ahorro Promedio</p>
+                        <p class="auth-stat-value">25%</p>
+                    </div>
+                </div>
+                <div class="auth-stat-card">
+                    <span class="auth-stat-indicator"></span>
+                    <div class="flex-1">
+                        <p class="auth-stat-label">Dispositivos Conectados</p>
+                        <p class="auth-stat-value">∞</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

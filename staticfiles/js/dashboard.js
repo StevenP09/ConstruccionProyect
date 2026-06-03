@@ -1,0 +1,1 @@
+ARCHIVO: energy_hub/static/js/dashboard.js

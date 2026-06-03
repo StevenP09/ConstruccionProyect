@@ -1,0 +1,448 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% load static %}
+
+{% block title %}Recomendaciones - Energy Hub{% endblock %}
+
+{% block dashboard_content %}
+<div class="dashboard-content">
+    <div class="dashboard-header">
+        <div>
+            <h1 class="dashboard-title">Recomendaciones Inteligentes</h1>
+            <p class="dashboard-subtitle">Sugerencias personalizadas basadas en IA para optimizar tu consumo</p>
+        </div>
+        <button class="btn btn-primary">
+            <i data-feather="refresh-cw" class="icon-md"></i>
+            Actualizar Análisis
+        </button>
+    </div>
+
+    <!-- Impact Summary -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="stat-card">
+            <div class="stat-card-content">
+                <div class="stat-card-header">
+                    <span class="stat-label">Ahorro Potencial</span>
+                    <div class="stat-icon bg-efficient-green">
+                        <i data-feather="dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="stat-value">$24.50</div>
+                <div class="stat-change stat-change-positive">
+                    <span>por mes</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-content">
+                <div class="stat-card-header">
+                    <span class="stat-label">Reducción de Consumo</span>
+                    <div class="stat-icon bg-electric-blue">
+                        <i data-feather="trending-down"></i>
+                    </div>
+                </div>
+                <div class="stat-value">18%</div>
+                <div class="stat-change stat-change-positive">
+                    <span>estimado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-content">
+                <div class="stat-card-header">
+                    <span class="stat-label">Recomendaciones</span>
+                    <div class="stat-icon bg-energy-yellow">
+                        <i data-feather="lightbulb"></i>
+                    </div>
+                </div>
+                <div class="stat-value">12</div>
+                <div class="stat-change stat-change-neutral">
+                    <span class="text-muted-foreground">activas</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-card-content">
+                <div class="stat-card-header">
+                    <span class="stat-label">Implementadas</span>
+                    <div class="stat-icon bg-muted">
+                        <i data-feather="check-circle"></i>
+                    </div>
+                </div>
+                <div class="stat-value">8</div>
+                <div class="stat-change stat-change-positive">
+                    <i data-feather="trending-up" class="icon-sm"></i>
+                    <span>67% completadas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Priority Recommendations -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i data-feather="star" class="icon-md"></i>
+                Recomendaciones Prioritarias
+            </h2>
+            <div class="flex items-center gap-2">
+                <select class="form-select">
+                    <option value="all">Todas las categorías</option>
+                    <option value="high-impact">Alto impacto</option>
+                    <option value="quick-wins">Resultados rápidos</option>
+                    <option value="automation">Automatización</option>
+                    <option value="hardware">Hardware</option>
+                </select>
+            </div>
+        </div>
+        <div class="card-body space-y-4">
+            <!-- High Impact Recommendation -->
+            <div class="recommendation-card recommendation-high">
+                <div class="recommendation-header">
+                    <div class="flex items-start gap-4">
+                        <div class="recommendation-icon bg-danger-red">
+                            <i data-feather="wind"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="recommendation-title">Optimiza el uso del Aire Acondicionado</h3>
+                                <span class="badge badge-danger">Alto Impacto</span>
+                                <span class="badge badge-outline">Automatización</span>
+                            </div>
+                            <p class="recommendation-description">
+                                Tu aire acondicionado consume 38% del total de energía. Implementar un horario
+                                inteligente y ajustar la temperatura a 24°C (en lugar de 20°C) puede reducir
+                                significativamente el consumo sin afectar el confort.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-item-label">Ahorro Mensual</div>
+                        <div class="metric-item-value text-efficient-green">$12.50</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Reducción</div>
+                        <div class="metric-item-value text-electric-blue">45.2 kWh</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">ROI</div>
+                        <div class="metric-item-value text-energy-yellow">Inmediato</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Dificultad</div>
+                        <div class="metric-item-value">Baja</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-actions">
+                    <button class="btn btn-primary">
+                        <i data-feather="play-circle" class="icon-md"></i>
+                        Configurar Automáticamente
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i data-feather="book-open" class="icon-md"></i>
+                        Ver Guía Detallada
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i data-feather="x" class="icon-md"></i>
+                        Descartar
+                    </button>
+                </div>
+
+                <div class="recommendation-details">
+                    <h4 class="font-semibold mb-2">Pasos Recomendados:</h4>
+                    <ol class="space-y-2">
+                        <li class="flex items-start gap-2">
+                            <i data-feather="check-circle" class="icon-sm text-muted-foreground mt-1"></i>
+                            <span>Aumentar temperatura objetivo de 20°C a 24°C</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-feather="check-circle" class="icon-sm text-muted-foreground mt-1"></i>
+                            <span>Configurar apagado automático de 23:00 a 06:00</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-feather="check-circle" class="icon-sm text-muted-foreground mt-1"></i>
+                            <span>Activar modo ECO cuando la habitación esté vacía (sensor de movimiento)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-feather="check-circle" class="icon-sm text-muted-foreground mt-1"></i>
+                            <span>Programar mantenimiento de filtros (cada 3 meses)</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Medium Impact Recommendation -->
+            <div class="recommendation-card recommendation-medium">
+                <div class="recommendation-header">
+                    <div class="flex items-start gap-4">
+                        <div class="recommendation-icon bg-warning-orange">
+                            <i data-feather="tv"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="recommendation-title">Elimina consumo fantasma de dispositivos</h3>
+                                <span class="badge badge-warning">Impacto Medio</span>
+                                <span class="badge badge-outline">Resultados Rápidos</span>
+                            </div>
+                            <p class="recommendation-description">
+                                Hemos detectado 4 dispositivos con consumo en standby elevado (TV, Microondas,
+                                Consola, Router). Usar regletas inteligentes puede eliminar hasta 35W de consumo
+                                continuo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-item-label">Ahorro Mensual</div>
+                        <div class="metric-item-value text-efficient-green">$7.80</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Reducción</div>
+                        <div class="metric-item-value text-electric-blue">25.2 kWh</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Inversión</div>
+                        <div class="metric-item-value text-energy-yellow">$45.00</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Payback</div>
+                        <div class="metric-item-value">6 meses</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-actions">
+                    <button class="btn btn-primary">
+                        <i data-feather="shopping-cart" class="icon-md"></i>
+                        Ver Productos Recomendados
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i data-feather="alert-circle" class="icon-md"></i>
+                        Crear Alerta de Recordatorio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Low Impact Recommendation -->
+            <div class="recommendation-card recommendation-low">
+                <div class="recommendation-header">
+                    <div class="flex items-start gap-4">
+                        <div class="recommendation-icon bg-electric-blue">
+                            <i data-feather="droplet"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="recommendation-title">Optimiza horario de la Lavadora</h3>
+                                <span class="badge badge-info">Impacto Bajo</span>
+                                <span class="badge badge-outline">Automatización</span>
+                            </div>
+                            <p class="recommendation-description">
+                                Programa tu lavadora para funcionar en horario valle (00:00-06:00) y ahorra en
+                                tarifa eléctrica. El ahorro es de $0.17 por ciclo, equivalente a $12.50 al año.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-item-label">Ahorro Mensual</div>
+                        <div class="metric-item-value text-efficient-green">$1.04</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Ahorro Anual</div>
+                        <div class="metric-item-value text-electric-blue">$12.50</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">ROI</div>
+                        <div class="metric-item-value text-energy-yellow">Inmediato</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Esfuerzo</div>
+                        <div class="metric-item-value">Muy Bajo</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-actions">
+                    <button class="btn btn-primary">
+                        <i data-feather="clock" class="icon-md"></i>
+                        Programar Horario
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i data-feather="check" class="icon-md"></i>
+                        Ya Implementado
+                    </button>
+                </div>
+            </div>
+
+            <!-- Energy Efficiency Recommendation -->
+            <div class="recommendation-card recommendation-medium">
+                <div class="recommendation-header">
+                    <div class="flex items-start gap-4">
+                        <div class="recommendation-icon bg-energy-yellow">
+                            <i data-feather="sun"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <h3 class="recommendation-title">Reemplaza bombillas por LED</h3>
+                                <span class="badge badge-warning">Impacto Medio</span>
+                                <span class="badge badge-outline">Hardware</span>
+                            </div>
+                            <p class="recommendation-description">
+                                Detectamos 8 bombillas incandescentes o halógenas en tu hogar. Reemplazarlas
+                                por LED de bajo consumo puede reducir hasta 80% el consumo en iluminación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-metrics">
+                    <div class="metric-item">
+                        <div class="metric-item-label">Ahorro Mensual</div>
+                        <div class="metric-item-value text-efficient-green">$5.60</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Reducción</div>
+                        <div class="metric-item-value text-electric-blue">18.0 kWh</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Inversión</div>
+                        <div class="metric-item-value text-energy-yellow">$80.00</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-item-label">Payback</div>
+                        <div class="metric-item-value">14 meses</div>
+                    </div>
+                </div>
+
+                <div class="recommendation-actions">
+                    <button class="btn btn-primary">
+                        <i data-feather="shopping-cart" class="icon-md"></i>
+                        Ver Bombillas Recomendadas
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i data-feather="calculator" class="icon-md"></i>
+                        Calcular ROI Detallado
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Insights -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i data-feather="cpu" class="icon-md"></i>
+                Análisis de IA - Patrones Detectados
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-electric-blue/10 border border-electric-blue/20 rounded-lg">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="trending-up" class="text-electric-blue mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold mb-1">Pico de consumo nocturno</h3>
+                            <p class="text-sm text-muted-foreground">
+                                Tu consumo entre 22:00-02:00 es un 45% mayor que el promedio.
+                                Considera revisar dispositivos que se mantienen encendidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-efficient-green/10 border border-efficient-green/20 rounded-lg">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="check-circle" class="text-efficient-green mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold mb-1">Uso eficiente de electrodomésticos</h3>
+                            <p class="text-sm text-muted-foreground">
+                                Tu lavadora y lavavajillas operan en horarios óptimos.
+                                Esto representa un ahorro de $8.50/mes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-energy-yellow/10 border border-energy-yellow/20 rounded-lg">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="sun" class="text-energy-yellow mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold mb-1">Oportunidad solar</h3>
+                            <p class="text-sm text-muted-foreground">
+                                Tu patrón de consumo diurno es ideal para energía solar.
+                                Inversión estimada: $6,500 | Payback: 7 años.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-warning-orange/10 border border-warning-orange/20 rounded-lg">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="alert-triangle" class="text-warning-orange mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold mb-1">Refrigerador antiguo</h3>
+                            <p class="text-sm text-muted-foreground">
+                                Tu refrigerador (>10 años) consume 40% más que modelos nuevos.
+                                Reemplazo podría ahorrar $180/año.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seasonal Recommendations -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i data-feather="calendar" class="icon-md"></i>
+                Recomendaciones Estacionales
+            </h2>
+            <span class="badge badge-info">Mayo 2026 - Otoño</span>
+        </div>
+        <div class="card-body">
+            <div class="space-y-3">
+                <div class="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
+                    <i data-feather="wind" class="text-electric-blue mt-1"></i>
+                    <div>
+                        <h3 class="font-medium mb-1">Reduce el uso de aire acondicionado</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Las temperaturas están bajando. Aprovecha ventilación natural y reduce el uso de climatización.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
+                    <i data-feather="droplet" class="text-electric-blue mt-1"></i>
+                    <div>
+                        <h3 class="font-medium mb-1">Aprovecha agua caliente solar</h3>
+                        <p class="text-sm text-muted-foreground">
+                            En otoño el sol aún calienta eficientemente. Considera terma solar para ahorrar en calefacción de agua.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
+                    <i data-feather="zap" class="text-efficient-green mt-1"></i>
+                    <div>
+                        <h3 class="font-medium mb-1">Prepara tu sistema de calefacción</h3>
+                        <p class="text-sm text-muted-foreground">
+                            Realiza mantenimiento preventivo antes del invierno para maximizar eficiencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

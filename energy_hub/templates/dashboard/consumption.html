@@ -1,0 +1,354 @@
+{% extends "dashboard/base_dashboard.html" %}
+{% load static %}
+
+{% block title %}Consumo y Gastos - Energy Hub{% endblock %}
+
+{% block dashboard_content %}
+<div class="dashboard-content">
+
+    <!-- Header Card con selector de período -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;">
+            <div>
+                <h1 class="dashboard-title" style="margin: 0 0 0.25rem 0;">Consumo y Gastos</h1>
+                <p class="dashboard-subtitle" style="margin: 0;">Análisis detallado de tu consumo energético y costos asociados</p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0;">
+                <span style="font-size: 0.75rem; color: var(--color-text-secondary); font-weight: 500;">Período</span>
+                <select class="form-select" style="min-width: 140px;">
+                    <option value="today">Hoy</option>
+                    <option value="yesterday">Ayer</option>
+                    <option value="week" selected>Semana</option>
+                    <option value="month">Este Mes</option>
+                    <option value="year">Este Año</option>
+                    <option value="custom">Personalizado</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style="margin-bottom: 1.5rem;">
+
+        <!-- Card 1: Gasto Total - azul sólido -->
+        <div style="
+            background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        ">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="
+                    width: 2.75rem; height: 2.75rem;
+                    border-radius: 0.75rem;
+                    background: rgba(255,255,255,0.2);
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <i data-feather="dollar-sign" style="width:1.25rem;height:1.25rem;color:white;"></i>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: rgba(255,255,255,0.8);">
+                    <i data-feather="trending-up" style="width:0.875rem;height:0.875rem;"></i>
+                </div>
+            </div>
+            <div>
+                <div style="font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 0.375rem;">Gasto Total Semanal</div>
+                <div style="font-size: 2rem; font-weight: 700; line-height: 1;">$74.94</div>
+                <div style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 0.375rem;">374.7 kWh</div>
+            </div>
+        </div>
+
+        <!-- Card 2: Promedio Diario -->
+        <div style="
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        ">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="
+                    width: 2.75rem; height: 2.75rem;
+                    border-radius: 0.75rem;
+                    background: rgba(234, 179, 8, 0.12);
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <i data-feather="trending-down" style="width:1.25rem;height:1.25rem;color:#ca8a04;"></i>
+                </div>
+                <span style="font-size: 0.75rem; font-weight: 600; color: #16a34a; background: rgba(22,163,74,0.1); padding: 0.2rem 0.5rem; border-radius: 9999px;">-8.5%</span>
+            </div>
+            <div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0.375rem;">Promedio Diario</div>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--color-text-primary); line-height: 1;">$10.71</div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 0.375rem;">53.5 kWh/día</div>
+            </div>
+        </div>
+
+        <!-- Card 3: Gasto Stand-by -->
+        <div style="
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        ">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="
+                    width: 2.75rem; height: 2.75rem;
+                    border-radius: 0.75rem;
+                    background: rgba(249, 115, 22, 0.12);
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <i data-feather="trending-up" style="width:1.25rem;height:1.25rem;color:#f97316;"></i>
+                </div>
+                <span style="font-size: 0.75rem; font-weight: 600; color: #f97316;">Evitable</span>
+            </div>
+            <div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0.375rem;">Gasto Stand-by</div>
+                <div style="font-size: 2rem; font-weight: 700; color: #f97316; line-height: 1;">$8.58</div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 0.375rem;">42.9 kWh desperdiciados</div>
+            </div>
+        </div>
+
+        <!-- Card 4: Ahorro Potencial -->
+        <div style="
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        ">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="
+                    width: 2.75rem; height: 2.75rem;
+                    border-radius: 0.75rem;
+                    background: rgba(16, 185, 129, 0.12);
+                    display: flex; align-items: center; justify-content: center;
+                ">
+                    <i data-feather="dollar-sign" style="width:1.25rem;height:1.25rem;color:#10b981;"></i>
+                </div>
+                <i data-feather="trending-down" style="width:1rem;height:1rem;color:#10b981;"></i>
+            </div>
+            <div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0.375rem;">Ahorro Potencial</div>
+                <div style="font-size: 2rem; font-weight: 700; color: #10b981; line-height: 1;">$36.89</div>
+                <div style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: 0.375rem;">Por mes eliminando stand-by</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Consumo vs Costo Chart -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-header">
+            <div>
+                <h2 class="card-title" style="margin-bottom: 0.25rem;">
+                    Consumo vs Costo
+                </h2>
+                <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin: 0;">Desglose semanal completo</p>
+            </div>
+            <button class="btn btn-secondary">
+                <i data-feather="download" class="icon-md"></i>
+                Exportar
+            </button>
+        </div>
+        <div class="chart-container">
+            <canvas id="consumption-cost-chart"></canvas>
+        </div>
+    </div>
+
+
+    <!-- Detailed Breakdown Table -->
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-header">
+            <h2 class="card-title">
+                <i data-feather="list" class="icon-md"></i>
+                Desglose Detallado por Dispositivo
+            </h2>
+            <div class="flex items-center gap-2">
+                <div class="relative">
+                    <span class="input-icon"><i data-feather="search"></i></span>
+                    <input type="text" placeholder="Buscar dispositivo..." class="form-input input-with-icon" style="min-width: 250px;">
+                </div>
+                <select class="form-select">
+                    <option value="all">Todos los dispositivos</option>
+                    <option value="high">Alto consumo</option>
+                    <option value="medium">Consumo medio</option>
+                    <option value="low">Bajo consumo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Dispositivo</th>
+                        <th>Ubicación</th>
+                        <th>Consumo (kWh)</th>
+                        <th>Costo ($)</th>
+                        <th>% del Total</th>
+                        <th>Promedio Diario</th>
+                        <th>Tendencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="device-icon bg-electric-blue/10">
+                                    <i data-feather="wind" class="text-electric-blue"></i>
+                                </div>
+                                <span class="font-medium">Aire Acondicionado</span>
+                            </div>
+                        </td>
+                        <td>Sala de Estar</td>
+                        <td class="font-semibold">124.8 kWh</td>
+                        <td class="font-semibold">$22.46</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill bg-danger-red" style="width: 38.4%"></div>
+                                </div>
+                                <span class="text-sm">38.4%</span>
+                            </div>
+                        </td>
+                        <td>4.03 kWh</td>
+                        <td>
+                            <span class="badge badge-danger">
+                                <i data-feather="trending-up" class="icon-sm"></i>
+                                +12%
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="device-icon bg-efficient-green/10">
+                                    <i data-feather="box" class="text-efficient-green"></i>
+                                </div>
+                                <span class="font-medium">Refrigerador</span>
+                            </div>
+                        </td>
+                        <td>Cocina</td>
+                        <td class="font-semibold">86.5 kWh</td>
+                        <td class="font-semibold">$12.98</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill bg-warning-orange" style="width: 26.6%"></div>
+                                </div>
+                                <span class="text-sm">26.6%</span>
+                            </div>
+                        </td>
+                        <td>2.79 kWh</td>
+                        <td>
+                            <span class="badge badge-success">
+                                <i data-feather="trending-down" class="icon-sm"></i>
+                                -3%
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="device-icon bg-energy-yellow/10">
+                                    <i data-feather="tv" class="text-energy-yellow"></i>
+                                </div>
+                                <span class="font-medium">Smart TV 55"</span>
+                            </div>
+                        </td>
+                        <td>Sala de Estar</td>
+                        <td class="font-semibold">42.3 kWh</td>
+                        <td class="font-semibold">$6.35</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill bg-energy-yellow" style="width: 13%"></div>
+                                </div>
+                                <span class="text-sm">13.0%</span>
+                            </div>
+                        </td>
+                        <td>1.37 kWh</td>
+                        <td>
+                            <span class="badge badge-neutral">
+                                <i data-feather="minus" class="icon-sm"></i>
+                                0%
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="device-icon bg-electric-blue/10">
+                                    <i data-feather="droplet" class="text-electric-blue"></i>
+                                </div>
+                                <span class="font-medium">Lavadora</span>
+                            </div>
+                        </td>
+                        <td>Lavandería</td>
+                        <td class="font-semibold">38.2 kWh</td>
+                        <td class="font-semibold">$5.73</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill bg-efficient-green" style="width: 11.7%"></div>
+                                </div>
+                                <span class="text-sm">11.7%</span>
+                            </div>
+                        </td>
+                        <td>1.23 kWh</td>
+                        <td>
+                            <span class="badge badge-success">
+                                <i data-feather="trending-down" class="icon-sm"></i>
+                                -5%
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="flex items-center gap-3">
+                                <div class="device-icon bg-warning-orange/10">
+                                    <i data-feather="monitor" class="text-warning-orange"></i>
+                                </div>
+                                <span class="font-medium">PC Escritorio</span>
+                            </div>
+                        </td>
+                        <td>Oficina</td>
+                        <td class="font-semibold">32.7 kWh</td>
+                        <td class="font-semibold">$4.82</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="progress-bar">
+                                    <div class="progress-bar-fill bg-electric-blue" style="width: 10%"></div>
+                                </div>
+                                <span class="text-sm">10.0%</span>
+                            </div>
+                        </td>
+                        <td>1.06 kWh</td>
+                        <td>
+                            <span class="badge badge-neutral">
+                                <i data-feather="minus" class="icon-sm"></i>
+                                +1%
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
